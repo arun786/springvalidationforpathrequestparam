@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,12 +21,11 @@ public class StudentController {
         this.studentValidator = studentValidator;
     }
 
-    @PutMapping("/students/v1/student/{id}")
-    public ResponseEntity<Student> upsertStudentDetails(@PathVariable(value = "id") Long studentId, @RequestBody Student student) {
-        student.setStudentId(studentId);
+    @PutMapping("/students/v1/student/")
+    public ResponseEntity<Student> upsertStudentDetails(@RequestBody Student student) {
         Errors errors = new BeanPropertyBindingResult(student, "student");
         studentValidator.validate(student, errors);
-        if (!errors.hasErrors()) {
+        if (errors.hasErrors()) {
             throw new ArunRunTimeException("INVALID_INPUT", errors);
         }
         return null;

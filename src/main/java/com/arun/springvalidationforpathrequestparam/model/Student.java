@@ -20,7 +20,6 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @AllArgsConstructor
-@Valid
 @NoArgsConstructor
 public class Student {
     @JsonIgnore
