@@ -1,14 +1,13 @@
 package com.arun.springvalidationforpathrequestparam.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.validation.ObjectError;
-
-import java.util.List;
 
 @Getter
 @Setter
-public class StudentErrors {
+@AllArgsConstructor
+public class Error {
     private String errorCode;
-    private List<ObjectError> errorCodes;
+    private String description;
 }
