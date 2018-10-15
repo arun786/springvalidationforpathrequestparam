@@ -15,4 +15,9 @@ public class StudentServiceImpl implements StudentService {
     public Student createStudentDetail(Student student) {
         return studentDao.createStudentDetail(student);
     }
+
+    @Override
+    public Student getStudentBasedOnId(Long studentId) {
+        return studentDao.getStudentBasedOnId(studentId);
+    }
 }

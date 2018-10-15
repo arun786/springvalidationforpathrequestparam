@@ -4,4 +4,6 @@ import com.arun.springvalidationforpathrequestparam.model.Student;
 
 public interface StudentService {
     Student createStudentDetail(Student student);
+
+    Student getStudentBasedOnId(Long studentId);
 }

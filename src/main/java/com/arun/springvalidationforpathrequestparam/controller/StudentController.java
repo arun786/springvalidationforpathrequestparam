@@ -9,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 public class StudentController {
@@ -34,6 +34,12 @@ public class StudentController {
         }
         Student studentDetail = studentService.createStudentDetail(student);
         return new ResponseEntity<>(studentDetail, HttpStatus.OK);
+    }
+
+    @GetMapping("/students/v1/student/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable(value = "id") Long id) {
+        Student studentBasedOnId = studentService.getStudentBasedOnId(id);
+        return new ResponseEntity<>(studentBasedOnId, HttpStatus.OK);
     }
 
 }

@@ -27,7 +27,7 @@ public class Student {
     private Long studentId;
     @NotEmpty(message = "Name cannot be empty")
     private String name;
-    @Pattern(regexp = "[0-9][0-9]", message = "age can be only numbers")
+    @Pattern(regexp = "[0-9]{1,3}", message = "age can be only numbers and of max of 3 digits")
     private String age;
     @PastOrPresent(message = "DOB can only be past date")
     private LocalDate dob;
